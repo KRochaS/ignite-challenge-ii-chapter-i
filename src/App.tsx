@@ -2,7 +2,7 @@ import "./styles/content.scss";
 import "./styles/global.scss";
 import "./styles/sidebar.scss";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { Content } from "./components/Content";
 import { SideBar } from "./components/SideBar";
@@ -20,9 +20,9 @@ export function App() {
     {} as GenreResponseProps
   );
 
-  function handleClickButton(id: number) {
+  const handleClickButton = useCallback((id: number) => {
     setSelectedGenreId(id);
-  }
+  }, []);
 
   useEffect(() => {
     api
